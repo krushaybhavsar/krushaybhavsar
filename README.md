@@ -1,17 +1,17 @@
 <h1 align="center">Hey, I'm Krushay Bhavsar</h1>
 <h3 align="center">A passionate self-taught programmer</h3>
 
-- 🔭 I’m currently working on [Chatterbox](https://github.com/krushaybhavsar/chatterbox)
+- 🛠️ I’m currently working on [Chatterbox](https://github.com/krushaybhavsar/chatterbox)
 
-- 🌱 I’m currently learning **React Native and JavaScript**
+- 🌱 I’m currently polishing my **React Native and JavaScript** skills
 
 - 👨‍💻 All of my projects are available on my [portfolio](https://krushaybhavsar.com)
 
-- 📫 Reach out to me by [email](krushaybhavsar@gmail.com)
+- 📫 Reach out to me by [email](mailto:krushaybhavsar@gmail.com?)
 
 - 📄 Check out my [resume](https://krushaybhavsar.com/assets/Krushay_Bhavsar_Resume.pdf)
 
-- ⚡ Fun fact **My favorite anime is Death Note**
+- ⚡ A fun fact about me is that I love long-distance running!
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
