@@ -5,11 +5,11 @@
 
 - 🌱 I’m currently learning **React Native and JavaScript**
 
-- 👨‍💻 All of my projects are available at [krushaybhavsar.com](krushaybhavsar.com)
+- 👨‍💻 All of my projects are available on my [portfolio](https://krushaybhavsar.com)
 
-- 📫 How to reach me krushaybhavsar@gmail.com
+- 📫 Reach out to me by [email](krushaybhavsar@gmail.com)
 
-- 📄 Learn more about my skills [https://krushaybhavsar.com/assets/Krushay_Bhavsar_Resume.pdf](https://krushaybhavsar.com/assets/Krushay_Bhavsar_Resume.pdf)
+- 📄 Check out my [resume](https://krushaybhavsar.com/assets/Krushay_Bhavsar_Resume.pdf)
 
 - ⚡ Fun fact **My favorite anime is Death Note**
 
@@ -17,7 +17,7 @@
 <p align="left">
 <a href="https://linkedin.com/in/krushaybhavsar" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="krushaybhavsar" height="30" width="40" /></a>
 <a href="https://instagram.com/krushaybhavsar" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="krushaybhavsar" height="30" width="40" /></a>
-<a href="https://www.youtube.com/c/krushaybhavsar" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/youtube.svg" alt="krushaybhavsar" height="30" width="40" /></a>
+<a href="https://www.youtube.com/channel/UCgpfQDfxE8OgeKkBc9RTwXA" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/youtube.svg" alt="krushaybhavsar" height="30" width="40" /></a>
 </p>
 
 <h3 align="left">Languages and Tools:</h3>
