@@ -3,8 +3,6 @@
 
 - 🛠️ I’m currently working on [Chatterbox](https://github.com/krushaybhavsar/chatterbox)
 
-- 🌱 I’m currently polishing my **React Native and JavaScript** skills
-
 - 👨‍💻 All of my projects are available on my [portfolio](https://krushaybhavsar.com)
 
 - 📫 Reach out to me by [email](mailto:krushaybhavsar@gmail.com?)
