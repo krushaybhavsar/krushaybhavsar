@@ -1,7 +1,7 @@
 <h1 align="center">Hey, I'm Krushay Bhavsar</h1>
 <h3 align="center">A passionate self-taught programmer</h3>
 
-- 🛠️ I’m currently working on [Chatterbox](https://github.com/krushaybhavsar/chatterbox)
+- 🛠️ I’m currently working on [Privalink](https://github.com/krushaybhavsar/privalink)
 
 - 👨‍💻 All of my projects are available on my [portfolio](https://krushaybhavsar.com)
 
