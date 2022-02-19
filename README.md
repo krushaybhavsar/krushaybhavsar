@@ -1,7 +1,7 @@
 <h1 align="center">Hey, I'm Krushay Bhavsar</h1>
 <h3 align="center">A passionate self-taught programmer</h3>
 
-- 🛠️ I’m currently working on [Privalink](https://github.com/krushaybhavsar/privalink)
+- 🛠️ I’m currently working on [Privalink](https://privalink.app)
 
 - 👨‍💻 All of my projects are available on my [portfolio](https://krushaybhavsar.com)
 
