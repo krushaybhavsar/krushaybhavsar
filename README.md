@@ -1,7 +1,7 @@
 <h1 align="center">Hey, I'm Krushay Bhavsar</h1>
 <h3 align="center">A passionate self-taught programmer</h3>
 
-- 🛠️ I’m currently working on [Tileshift](https://tileshiftgame.com)
+- 🛠️ I’m currently working on [Privanet](https://github.com/krushaybhavsar/privanet), a decentralized data transfering and storage application built using the InterPlanetary File System (IPFS) protocol and Tauri. 
 
 - 👨‍💻 All of my projects are available on my [portfolio](https://krushaybhavsar.com)
 
