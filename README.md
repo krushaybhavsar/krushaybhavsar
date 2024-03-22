@@ -1,15 +1,11 @@
 <h1 align="center">Hey, I'm Krushay Bhavsar</h1>
 <h3 align="center">A passionate self-taught programmer</h3>
 
-- 🛠️ I’m currently working on [Privanet](https://github.com/krushaybhavsar/privanet), a decentralized data transfering and storage application built using the InterPlanetary File System (IPFS) protocol and Electron. 
-
 - 👨‍💻 All of my projects are available on my [portfolio](https://krushaybhavsar.com)
 
 - 📫 Reach out to me by [email](mailto:krushaybhavsar@gmail.com?)
 
 - 📄 Check out my [resume](https://krushaybhavsar.com/assets/Krushay_Bhavsar_Resume.pdf)
-
-- ⚡ A fun fact about me is that I love long-distance running!
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
