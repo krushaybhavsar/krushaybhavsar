@@ -1,3 +1,11 @@
+<!--
+<a href="https://krushaybhavsar.com/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/krushaybhavsar/krushaybhavsar/main/dark_mode.svg">
+    <img alt="Andrew Grant's GitHub Profile README" src="https://raw.githubusercontent.com/krushaybhavsar/krushaybhavsar/main/light_mode.svg">
+  </picture>
+</a>
+-->
 <h1 align="center">Hey, I'm Krushay Bhavsar</h1>
 <h3 align="center">A passionate self-taught programmer</h3>
 
