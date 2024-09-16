@@ -49,7 +49,7 @@ text, tspan {white-space: pre;}
 <tspan x="370" y="190" class="keyColor">Languages</tspan>.<tspan class="keyColor">Programming</tspan>: <tspan class="valueColor">Java, Python, JavaScript, SQL, C, C#</tspan>
 <tspan x="370" y="210" class="keyColor">Languages</tspan>.<tspan class="keyColor">Development</tspan>: <tspan class="valueColor">React.js, PostgreSQL, Spring, AWS</tspan>
 <tspan x="370" y="230" class="keyColor">Languages</tspan>.<tspan class="keyColor">Real</tspan>: <tspan class="valueColor">English, Hindi, Gujarati</tspan>
-<tspan x="370" y="270" class="keyColor">Current</tspan>.<tspan class="keyColor">Projects</tspan>: <tspan class="valueColor">Privalink, instant secure file sharing</tspan>
+<tspan x="370" y="270" class="keyColor">Current</tspan>.<tspan class="keyColor">Projects</tspan>: <tspan class="valueColor">Privalink, zero-knowledge data transfer</tspan>
 <tspan x="370" y="290" class="keyColor">Current</tspan>.<tspan class="keyColor">Hobbies</tspan>: <tspan class="valueColor">Jigsaw Puzzles, Hiking, Game of Thrones</tspan>
 <tspan x="370" y="330" class="keyColor">Contact</tspan>:
 <tspan x="370" y="350">——————</tspan>
