@@ -5,6 +5,25 @@
     <img alt="Krushay Bhavsar's GitHub Profile README" src="https://raw.githubusercontent.com/krushaybhavsar/krushaybhavsar/main/light_mode.svg">
   </picture>
 </a>
+
+## Featured Projects
+
+### 🔒 Privalink [Work in progress]
+- Zero-knowledge File Transfer for Sensitive Documents
+- https://github.com/krushaybhavsar/privalink/
+
+### 📖 Tutor Connect [[Link]](https://tutorconnect.sboe.org)
+- Instantly connect with verified tutors
+- https://github.com/krushaybhavsar/tutor-connect
+
+### 🤙 Signslate
+- Realtime ASL to English and English to ASL translator
+- https://github.com/krushaybhavsar/signslate
+
+### 🎮 Tileshift [[Link]](https://tileshiftgame.com)
+- Daily word puzzle game
+- https://github.com/krushaybhavsar/tileshift
+
 <!--
 <h1 align="center">Hey, I'm Krushay Bhavsar</h1>
 <h3 align="center">A passionate self-taught programmer</h3>
