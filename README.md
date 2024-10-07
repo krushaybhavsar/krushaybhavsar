@@ -9,7 +9,7 @@
 ## Featured Projects
 
 ### 🔒 Privalink [Work in progress]
-- Zero-knowledge File Transfer for Sensitive Documents
+- Zero-knowledge file transfer for sensitive documents
 - https://github.com/krushaybhavsar/privalink/
 
 ### 📖 Tutor Connect [[Link]](https://tutorconnect.sboe.org)
