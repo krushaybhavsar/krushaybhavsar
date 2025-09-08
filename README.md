@@ -8,9 +8,9 @@
 
 ## Featured Projects
 
-### 🔒 Privalink [Work in progress]
-- Zero-knowledge file transfer for sensitive documents
-- https://github.com/krushaybhavsar/privalink/
+### 📊 Elytra [Work in progress]
+- A powerful, AI-driven database client
+- https://github.com/krushaybhavsar/elytra/
 
 ### 📖 Tutor Connect [[Link]](https://tutorconnect.sboe.org)
 - Instantly connect with verified tutors
