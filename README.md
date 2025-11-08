@@ -9,7 +9,7 @@
 ## Featured Projects
 
 ### 📊 Elytra [Work in progress]
-- A powerful, AI-driven database client
+- An open-source, AI-powered database management tool
 - https://github.com/krushaybhavsar/elytra/
 
 ### 📖 Tutor Connect [[Link]](https://tutorconnect.sboe.org)
