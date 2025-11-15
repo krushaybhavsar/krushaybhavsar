@@ -8,10 +8,9 @@
 
 ## Featured Projects
 
-### 📊 Elytra [Work in progress]
+### 📊 Elytra [Work in progress] [[Link]](https://elytradb.com)
 - An open-source, AI-powered database management tool
 - https://github.com/krushaybhavsar/elytra/
-- https://elytradb.com
 
 ### 📖 Tutor Connect [[Link]](https://tutorconnect.sboe.org)
 - Instantly connect with verified tutors
