@@ -12,17 +12,17 @@
 - An open-source, AI-powered database management tool
 - https://github.com/krushaybhavsar/elytra/
 
-### 📖 Tutor Connect [[Link]](https://tutorconnect.sboe.org)
-- Instantly connect with verified tutors
-- https://github.com/krushaybhavsar/tutor-connect
+### 🎮 Tileshift [[Link]](https://tileshiftgame.com)
+- Daily word puzzle game
+- https://github.com/krushaybhavsar/tileshift
 
 ### 🤙 Signslate
 - Realtime ASL to English and English to ASL translator
 - https://github.com/krushaybhavsar/signslate
 
-### 🎮 Tileshift [[Link]](https://tileshiftgame.com)
-- Daily word puzzle game
-- https://github.com/krushaybhavsar/tileshift
+### 📖 Tutor Connect [[Link]](https://tutorconnect.sboe.org)
+- Instantly connect with verified tutors
+- https://github.com/krushaybhavsar/tutor-connect
 
 <!--
 <h1 align="center">Hey, I'm Krushay Bhavsar</h1>
