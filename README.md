@@ -11,6 +11,7 @@
 ### 📊 Elytra [Work in progress]
 - An open-source, AI-powered database management tool
 - https://github.com/krushaybhavsar/elytra/
+- https://elytradb.com
 
 ### 📖 Tutor Connect [[Link]](https://tutorconnect.sboe.org)
 - Instantly connect with verified tutors
