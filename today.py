@@ -6,6 +6,12 @@ from xml.dom import minidom
 import time
 import hashlib
 
+GITHUB_GRAPHQL_URL = "https://api.github.com/graphql"
+MAX_RETRIES = 6
+COMMIT_PAGE_SIZE = 25
+REQUEST_TIMEOUT = 30
+
+
 # Fine-grained personal access token with All Repositories access:
 # Account permissions: read:Followers, read:Starring, read:Watching
 # Repository permissions: read:Commit statuses, read:Contents, read:Issues, read:Metadata, read:Pull Requests
@@ -53,19 +59,42 @@ def format_plural(unit):
 
 def simple_request(func_name, query, variables):
     """
-    Returns a request, or raises an Exception if the response does not succeed.
+    Returns a successful GitHub GraphQL request, retrying temporary GitHub/API failures.
     """
-    request = requests.post(
-        "https://api.github.com/graphql",
-        json={"query": query, "variables": variables},
-        headers=HEADERS,
-    )
-    if request.status_code == 200:
-        return request
-    raise Exception(
-        func_name, " has failed with a", request.status_code, request.text, QUERY_COUNT
-    )
+    last_request = None
 
+    for attempt in range(MAX_RETRIES):
+        request = requests.post(
+            GITHUB_GRAPHQL_URL,
+            json={"query": query, "variables": variables},
+            headers=HEADERS,
+            timeout=REQUEST_TIMEOUT,
+        )
+        last_request = request
+
+        if request.status_code == 200:
+            return request
+
+        # GitHub sometimes returns 502/503/504 for expensive GraphQL queries.
+        # 403 can also happen from secondary/abuse-rate limiting. Back off and retry.
+        if request.status_code in (403, 502, 503, 504):
+            wait_seconds = min(60, 2 ** attempt)
+            print(
+                f"GitHub API returned {request.status_code} in {func_name}; "
+                f"retrying in {wait_seconds}s..."
+            )
+            time.sleep(wait_seconds)
+            continue
+
+        break
+
+    raise Exception(
+        func_name,
+        " has failed with a",
+        last_request.status_code,
+        last_request.text,
+        QUERY_COUNT,
+    )
 
 def graph_commits(start_date, end_date):
     """
@@ -144,16 +173,17 @@ def recursive_loc(
     cursor=None,
 ):
     """
-    Uses GitHub's GraphQL v4 API and cursor pagination to fetch 100 commits from a repository at a time
+    Uses GitHub's GraphQL v4 API and cursor pagination to fetch commit LOC.
+    Fetches fewer commits per page to avoid GitHub GraphQL 502 timeouts.
     """
     query_count("recursive_loc")
     query = """
-    query ($repo_name: String!, $owner: String!, $cursor: String) {
+    query ($repo_name: String!, $owner: String!, $cursor: String, $page_size: Int!) {
         repository(name: $repo_name, owner: $owner) {
             defaultBranchRef {
                 target {
                     ... on Commit {
-                        history(first: 25, after: $cursor) {
+                        history(first: $page_size, after: $cursor) {
                             totalCount
                             edges {
                                 node {
@@ -179,53 +209,86 @@ def recursive_loc(
             }
         }
     }"""
-    variables = {"repo_name": repo_name, "owner": owner, "cursor": cursor}
-    for attempt in range(5):
+    variables = {
+        "repo_name": repo_name,
+        "owner": owner,
+        "cursor": cursor,
+        "page_size": COMMIT_PAGE_SIZE,
+    }
+
+    last_request = None
+    for attempt in range(MAX_RETRIES):
         request = requests.post(
-            "https://api.github.com/graphql",
+            GITHUB_GRAPHQL_URL,
             json={"query": query, "variables": variables},
             headers=HEADERS,
-        )  # I cannot use simple_request(), because I want to save the file before raising Exception
-        
+            timeout=REQUEST_TIMEOUT,
+        )
+        last_request = request
+
         if request.status_code == 200:
-            break
-        
-        if request.status_code in (502, 503, 504):
-            time.sleep(2 ** attempt)
-            continue
-    
-    if request.status_code == 200:
-        if (
-            request.json()["data"]["repository"]["defaultBranchRef"] != None
-        ):  # Only count commits if repo isn't empty
-            return loc_counter_one_repo(
-                owner,
-                repo_name,
-                data,
-                cache_comment,
-                request.json()["data"]["repository"]["defaultBranchRef"]["target"][
-                    "history"
-                ],
-                addition_total,
-                deletion_total,
-                my_commits,
+            response_json = request.json()
+
+            # GraphQL can return HTTP 200 with an errors array. Treat this like a retryable
+            # temporary failure if GitHub is complaining about abuse/rate limits.
+            if response_json.get("errors"):
+                error_text = str(response_json["errors"])
+                if "abuse" in error_text.lower() or "rate limit" in error_text.lower():
+                    wait_seconds = min(90, 10 * (attempt + 1))
+                    print(
+                        f"GitHub GraphQL throttled {owner}/{repo_name}; "
+                        f"retrying in {wait_seconds}s..."
+                    )
+                    time.sleep(wait_seconds)
+                    continue
+                raise Exception(
+                    "recursive_loc() GraphQL errors",
+                    error_text,
+                    QUERY_COUNT,
+                )
+
+            if response_json["data"]["repository"]["defaultBranchRef"] is not None:
+                return loc_counter_one_repo(
+                    owner,
+                    repo_name,
+                    data,
+                    cache_comment,
+                    response_json["data"]["repository"]["defaultBranchRef"]["target"][
+                        "history"
+                    ],
+                    addition_total,
+                    deletion_total,
+                    my_commits,
+                )
+            else:
+                return 0
+
+        if request.status_code in (403, 502, 503, 504):
+            wait_seconds = min(90, 10 * (attempt + 1)) if request.status_code == 403 else min(60, 2 ** attempt)
+            print(
+                f"GitHub API returned {request.status_code} for {owner}/{repo_name}; "
+                f"retrying in {wait_seconds}s..."
             )
-        else:
-            return 0
+            time.sleep(wait_seconds)
+            continue
+
+        break
+
     force_close_file(
         data, cache_comment
-    )  # saves what is currently in the file before this program crashes
-    if request.status_code == 403:
+    )  # saves what is currently in the file before this program continues/fails
+
+    if last_request is not None and last_request.status_code == 403:
         raise Exception(
-            "Too many requests in a short amount of time!\nYou've hit the non-documented anti-abuse limit!"
+            "Too many requests in a short amount of time! GitHub secondary rate limiting was hit."
         )
+
     raise Exception(
         "recursive_loc() has failed with a",
-        request.status_code,
-        request.text,
+        last_request.status_code if last_request is not None else "unknown",
+        last_request.text if last_request is not None else "no response",
         QUERY_COUNT,
     )
-
 
 def loc_counter_one_repo(
     owner,
@@ -375,7 +438,18 @@ def cache_builder(edges, comment_size, force_cache, loc_add=0, loc_del=0):
                 ):
                     # if commit count has changed, update loc for that repo
                     owner, repo_name = edges[index]["node"]["nameWithOwner"].split("/")
-                    loc = recursive_loc(owner, repo_name, data, cache_comment)
+                    try:
+                        loc = recursive_loc(owner, repo_name, data, cache_comment)
+                    except Exception as exc:
+                        # Do not fail the whole GitHub Action just because GitHub throttled
+                        # or temporarily failed one repository's expensive LOC refresh.
+                        # Keep the previous cached value for this repo and try the next one.
+                        print(
+                            f"Warning: could not refresh LOC for {owner}/{repo_name}. "
+                            f"Keeping cached value. Reason: {exc}"
+                        )
+                        continue
+
                     data[index] = (
                         repo_hash
                         + " "
