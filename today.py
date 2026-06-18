@@ -153,7 +153,7 @@ def recursive_loc(
             defaultBranchRef {
                 target {
                     ... on Commit {
-                        history(first: 100, after: $cursor) {
+                        history(first: 25, after: $cursor) {
                             totalCount
                             edges {
                                 node {
