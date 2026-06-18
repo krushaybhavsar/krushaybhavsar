@@ -180,11 +180,20 @@ def recursive_loc(
         }
     }"""
     variables = {"repo_name": repo_name, "owner": owner, "cursor": cursor}
-    request = requests.post(
-        "https://api.github.com/graphql",
-        json={"query": query, "variables": variables},
-        headers=HEADERS,
-    )  # I cannot use simple_request(), because I want to save the file before raising Exception
+    for attempt in range(5):
+        request = requests.post(
+            "https://api.github.com/graphql",
+            json={"query": query, "variables": variables},
+            headers=HEADERS,
+        )  # I cannot use simple_request(), because I want to save the file before raising Exception
+        
+        if request.status_code == 200:
+            break
+        
+        if request.status_code in (502, 503, 504):
+            time.sleep(2 ** attempt)
+            continue
+    
     if request.status_code == 200:
         if (
             request.json()["data"]["repository"]["defaultBranchRef"] != None
